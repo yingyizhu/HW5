@@ -1,0 +1,36 @@
+﻿body {
+    background-color: lightblue ; 
+    color: black;
+}
+
+.bold {
+    font-weight:bold ;
+}
+
+.cssgridview{
+    width:auto; 
+    margin : 5px 0 10px 0; 
+    border :solid 1px black; 
+    border-collapse:collapse; 
+    text-align :center ; 
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color:black;
+}
+
+.cssgridview td{
+    padding :10px;
+    border :solid 1px black;
+    color:black 
+}
+
+.cssgridview th {
+    padding:10px;
+    color:lightblue;
+    border-left :solid 1px lightgreen;
+    }
+
+.cssgridview .alt {
+    background-color:aqua;
+    }
+
+
