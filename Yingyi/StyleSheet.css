@@ -7,7 +7,8 @@
     font-weight:bold ;
 }
 
-.cssgridview{
+
+.loanGridView{
     width:auto; 
     margin : 5px 0 10px 0; 
     border :solid 1px black; 
@@ -17,20 +18,24 @@
     color:black;
 }
 
-.cssgridview td{
-    padding :10px;
-    border :solid 1px black;
-    color:black 
+
+.loanGridView td
+{
+        padding: 10px;
+        border: solid 2px black;
+        color: blue;
+
 }
 
-.cssgridview th {
-    padding:10px;
-    color:lightblue;
-    border-left :solid 1px lightgreen;
+.loanGridView th {
+        padding: 10px;
+        color: white;
+        background: green url(./style.grd_head.png) repeat-x top;
+        border-left: solid 2px black;
+        font-size: 0.9em;
     }
 
-.cssgridview .alt {
-    background-color:aqua;
+.loanGridView .alt {
+        background-color : black ;
     }
-
 

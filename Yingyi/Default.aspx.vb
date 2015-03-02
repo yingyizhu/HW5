@@ -1,16 +1,18 @@
-﻿
+﻿Imports System.Data
+
 Partial Class _Default
     Inherits System.Web.UI.Page
 
     Protected Sub btn_calculate_Click(sender As Object, e As EventArgs) Handles btn_calculate.Click
 
         'decare variables
-        Dim loanAmount As Double
+        Dim loanAmount As Double = 0
         Dim annualRate As Double
         Dim interestRate As Double
         Dim term As Integer
         Dim loanTerm As Integer
         Dim monthlyPayment As Double
+        Dim pmtDate As Date
 
         'This section is declaring the variables for loan amortization.
         Dim interestPaid As Double
@@ -30,8 +32,6 @@ Partial Class _Default
         annualRate = CDbl(tb_annualInterest.Text)
         term = CDbl(tb_LoanTerm.Text)
 
-        'This section formats the loan input to currency.
-        tb_loanAmount.Text = FormatCurrency(loanAmount)
 
         'Converting the annual rate to a monthly rate by dividing by 100 * 12 (months in a year)
         interestRate = annualRate / (100 * 12)
@@ -48,12 +48,16 @@ Partial Class _Default
 
         'Adds items to list box, formats them for currency and adds pad spacing for each item.
         loanAmortTbl.Columns.Add("Payment Number", System.Type.GetType("System.String"))
+        loanAmortTbl.Columns.Add("Payment Date", System.Type.GetType("System.String"))
         loanAmortTbl.Columns.Add("Principal Paid", System.Type.GetType("System.String"))
         loanAmortTbl.Columns.Add("Interest Paid", System.Type.GetType("System.String"))
+        loanAmortTbl.Columns.Add("New Balance", System.Type.GetType("System.String"))
 
 
         'This section uses the for loop to display the loan balance and interest paid over the term of the loan.
         Dim counterStart As Integer
+        pmtDate = Date.Today
+
 
         For counterStart = 1 To loanTerm
 
@@ -62,12 +66,15 @@ Partial Class _Default
             principal = monthlyPayment - interestPaid
             nBalance = loanAmount - principal
             loanAmount = nBalance
+            pmtDate = pmtDate.AddMonths(1)
 
             'Writes the data to a new row in the gridview.
             tRow = loanAmortTbl.NewRow()
             tRow("Payment Number") = String.Format(counterStart)
+            tRow("Payment Date") = String.Format("{0:MM/dd/yyyy}", pmtDate)
             tRow("Principal Paid") = String.Format("{0:C}", principal) ' String.Format("{0:C},principal) formats the variable "prinicpal" as currency (C).
             tRow("Interest Paid") = String.Format("{0:C}", interestPaid)
+            tRow("New Balance") = String.Format("{0:C}", nBalance)
             loanAmortTbl.Rows.Add(tRow)
 
             'Loops to next counterStart (Continues loop until counterStart requirements are met (loanTerm)).
@@ -80,10 +87,14 @@ Partial Class _Default
     End Sub
 
     Protected Sub btn_clean_Click(sender As Object, e As EventArgs) Handles btn_clean.Click
+
+        'clean inputs and outputs
         tb_annualInterest.Text = String.Empty
         tb_loanAmount.Text = String.Empty
         tb_LoanTerm.Text = String.Empty
         lb_result.Text = String.Empty
 
+        'clear table
+        loanGridView.Visible = False
     End Sub
 End Class
