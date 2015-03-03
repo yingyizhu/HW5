@@ -6,13 +6,16 @@ Partial Class _Default
     Protected Sub btn_calculate_Click(sender As Object, e As EventArgs) Handles btn_calculate.Click
 
         'decare variables
-        Dim loanAmount As Double = 0
+        Dim loanAmount As Double
         Dim annualRate As Double
         Dim interestRate As Double
         Dim term As Integer
         Dim loanTerm As Integer
         Dim monthlyPayment As Double
         Dim pmtDate As Date
+
+        lb_infor.Text = String.Empty
+
 
         'This section is declaring the variables for loan amortization.
         Dim interestPaid As Double
@@ -93,6 +96,9 @@ Partial Class _Default
         tb_loanAmount.Text = String.Empty
         tb_LoanTerm.Text = String.Empty
         lb_result.Text = String.Empty
+
+        'show information
+        lb_infor.Text = "Welcome to my mortage calculator. Please complete the fields above to hava your monthly payment and loan repayment schedule calculated for you.lated for you."
 
         'clear table
         loanGridView.Visible = False

@@ -1,5 +1,5 @@
 ﻿body {
-    background-color: lightblue ; 
+    background-color: #DDFFF3 ; 
     color: black;
 }
 
@@ -7,11 +7,15 @@
     font-weight:bold ;
 }
 
+#loanGridView{
+    margin-left: auto;
+    margin-right: auto;
+    width: 60%;
+}
 
-.loanGridView{
+.cssgirdview{
     width:auto; 
     margin : 5px 0 10px 0; 
-    border :solid 1px black; 
     border-collapse:collapse; 
     text-align :center ; 
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -19,23 +23,25 @@
 }
 
 
-.loanGridView td
+.cssgirdview td 
 {
-        padding: 10px;
-        border: solid 2px black;
-        color: blue;
-
+padding:10px; 
+color:#003053; 
+background-color:lightyellow; 
+border: solid 3px #CCE881;
+text-align :center ; 
 }
 
-.loanGridView th {
-        padding: 10px;
-        color: white;
-        background: green url(./style.grd_head.png) repeat-x top;
-        border-left: solid 2px black;
-        font-size: 0.9em;
-    }
+.cssgirdview th 
+{
+padding:10px; 
+color:black ; 
+background-color:#CCE881 ;
+text-align :center ; 
+border: solid 3px #CCE881;
+}
 
-.loanGridView .alt {
-        background-color : black ;
-    }
-
+.cssgirdview  .alt
+{
+background-color:blue ;
+}
